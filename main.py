@@ -13,7 +13,7 @@ b = ""
 def get_live_videos():
     youtube = build('youtube', 'v3', developerKey=youtube_api_key)
     search_response = youtube.search().list(
-        part='id,snippet',
+        part='id,snippet,brandingSettings',
         channelId=channel_id,
         maxResults='100',
         order='date',
@@ -57,7 +57,7 @@ def loop():
             discord = Discord(url=webhook_url)
             discord.post(
                 content="ライブ配信中\n開始時間 "+live_videos2[0]["starttime"].strftime('%Y-%m-%d %H:%M:%S') +"\n"+live_videos[0].get("title") + "\n" + "https://www.youtube.com/watch?v="+ live_videos[0].get("id"),
-                username="【ライブ配信通知】へっぽこばぶ太郎",
+                username="【ライブ配信通知】"+live_videos[0].get("channelTitle"),
                 avatar_url="https://yt3.ggpht.com/IhCrx3NlPelAN_eXEXChNEgvIOI4NS6Q1ld2lzTYKCyv-FFks6vdmcfo5y0Co6cp8rGhZvS6ow=s88-c-k-c0x00ffffff-no-rj"
             )
             webbrowser.open("https://www.youtube.com/watch?v="+ live_videos[0].get("id"), new=1, autoraise=True)

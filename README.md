@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+# 【YouTube】YouTube Notice Discord
+通称ようつべ配信開始通知Bot君(適当)
 
-You can use the [editor on GitHub](https://github.com/renit0424/YouTubeNoticeDiscord/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+[YouTube](https://youtube.com/)で気になるあの子の配信開始通知をdiscordに投げてくれるプログラム。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+言語はPythonで書いてます。
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+クッソ雑に作ってあるので手直ししたい人は勝手にしてください()
+# 使い方
+- google-api-python-clientを使用するのでインストール
+```
+pip install google-api-python-client
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/renit0424/YouTubeNoticeDiscord/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- 自動更新のために[schedule](https://github.com/dbader/schedule)を使うのでインストール
+```
+pip install schedule
+```
+# YouTube Data API v3でAPIを発行
+  1.近いうちに記載します。
+  
+  2.後で使うので`ClientID`,`ClientSecret`をメモしておくか設定のconfig.pyに記載しておく。
+# discordのWebhookURLを発行する。
+  [こっから](https://support.discord.com/hc/ja/articles/228383668-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB-Webhooks%E3%81%B8%E3%81%AE%E5%BA%8F%E7%AB%A0)サイト見ながら発行する。
+# 設定
+  config.pyにさっき取得したものたちを記載する。
+  ```
+#YouTubeAPIKey
+youtube_api_key = '***'
+#channelID
+channel_id = '***'
+#discord_webhookURL
+webhookurl = 'https://discordapp.com/api/webhooks/***'
+#呼び出す時間(分)
+calltime = 20
+  ```
+あとはmain.pyを実行。
+多分動く。
